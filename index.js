@@ -39,7 +39,7 @@ async function handle(item, svgCompile, req, res) {
     if (kind === 'qr') {
       value = await QrCode.toDataURL(value);
     } else if (kind === 'image') {
-      value = await wrapInCache(item.name + '.' + name, cache = 3, () => fetchImage(value));
+      value = await wrapInCache(item.name + '.' + name, cache, () => fetchImage(value));
     }
     data[name] = value;
   }
