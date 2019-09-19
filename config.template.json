@@ -5,7 +5,8 @@
       {
         "name": "bg",
         "kind": "image",
-        "defaultValue": "https://jiasuyun-pub.jiasuyunkeji.com/test/invite1.jpg"
+        "defaultValue": "https://jiasuyun-pub.jiasuyunkeji.com/test/invite1.jpg",
+        "cache": 86400
       },
       {
         "name": "inviteCode",

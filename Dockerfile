@@ -4,7 +4,10 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm ci --only=production
+RUN apk add fontconfig \
+  && rm -rf /var/cache/apk \
+  && mkdir -p /usr/share/fonts \
+  && npm ci --only=production
 
 COPY . .
 
