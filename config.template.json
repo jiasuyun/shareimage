@@ -1,0 +1,25 @@
+[
+  {
+    "name": "active1",
+    "vars": [
+      {
+        "name": "bg",
+        "kind": "image",
+        "defaultValue": "http://drawsvg.org/drawsvg/samples/png/joconde.png"
+      },
+      {
+        "name": "userLogo",
+        "kind": "image"
+      },
+      {
+        "name": "userName",
+        "kind": "text"
+      },
+      {
+        "name": "qrCode",
+        "kind": "qr"
+      }
+    ],
+    "svg": "svg/active1.svg"
+  }
+]

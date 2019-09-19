@@ -1,0 +1,22 @@
+{
+  "name": "shareimage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "express": "^4.17.1",
+    "file-type": "^12.3.0",
+    "lodash.template": "^4.5.0",
+    "node-cache": "^4.2.1",
+    "qrcode": "^1.4.1",
+    "sharp": "^0.23.0"
+  }
+}
