@@ -1,18 +1,14 @@
 [
   {
-    "name": "active1",
+    "name": "invite1",
     "vars": [
       {
         "name": "bg",
         "kind": "image",
-        "defaultValue": "http://drawsvg.org/drawsvg/samples/png/joconde.png"
+        "defaultValue": "https://jiasuyun-pub.jiasuyunkeji.com/test/invite1.jpg"
       },
       {
-        "name": "userLogo",
-        "kind": "image"
-      },
-      {
-        "name": "userName",
+        "name": "inviteCode",
         "kind": "text"
       },
       {
@@ -20,6 +16,6 @@
         "kind": "qr"
       }
     ],
-    "svg": "svg/active1.svg"
+    "svg": "https://jiasuyun-pub.jiasuyunkeji.com/test/invite1.svg"
   }
 ]

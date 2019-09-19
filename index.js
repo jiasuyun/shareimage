@@ -13,8 +13,7 @@ const config = require('./config');
 
 // TODO validate config
 
-config.map(item => {
-  const svgContent = fs.readFileSync(item.svg, 'utf8');
+Promise.all(config.map(item => fetchSvg(item.svg).then(svgContent => {
   const svgCompile = template(svgContent);
   app.get('/' + item.name, (req, res) => {
     handle(item, svgCompile, req, res).catch(err => {
@@ -23,9 +22,14 @@ config.map(item => {
       res.end(err.message);
     })
   });
-});
+})))
+  .then(() => {
+    app.listen(port, '0.0.0.0', () => console.log(`Listening on port ${port}!`));
+  })
+  .catch(err => {
+    console.error(err);
+  });
 
-app.listen(port, '0.0.0.0', () => console.log(`Listening on port ${port}!`));
 
 async function handle(item, svgCompile, req, res) {
   const data = {};
@@ -37,7 +41,7 @@ async function handle(item, svgCompile, req, res) {
       throw new Error(`Querystring ${name} is required`);
     }
     if (kind === 'qr') {
-      value = await QrCode.toDataURL(value);
+      value = await QrCode.toDataURL(value, { margin: 0 });
     } else if (kind === 'image') {
       value = await wrapInCache(item.name + '.' + name, cache, () => fetchImage(value));
     }
@@ -57,6 +61,14 @@ async function fetchImage(imageUrl) {
   const buffer = res.data;
   const type = fileType(buffer);
   return `data:${type.mime};base64,${buffer.toString('base64')}`
+}
+
+async function fetchSvg(imageUrl) {
+  const res = await axios.get(imageUrl, {
+    timeout: 10000,
+    responseType: 'text',
+  });
+  return res.data;
 }
 
 async function wrapInCache(key, ttl, fn) {
