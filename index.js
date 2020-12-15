@@ -1,5 +1,4 @@
 const sharp = require('sharp');
-const fs = require('fs');
 const express = require('express');
 const QrCode = require('qrcode');
 const template = require('lodash.template');
@@ -59,7 +58,7 @@ async function fetchImage(imageUrl) {
     responseType: 'arraybuffer',
   });
   const buffer = res.data;
-  const type = fileType(buffer);
+  const type = fileType.fromBuffer(buffer);
   return `data:${type.mime};base64,${buffer.toString('base64')}`
 }
 
